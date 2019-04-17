@@ -88,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
     private void goMainActivity() {
         Log.d(TAG, "Navigating to main activity");
 
-        Intent i = new Intent(LoginActivity.this, MainActivity.class);
+        Intent i = new Intent(LoginActivity.this, MovieActivity.class);
         startActivity(i);
         finish();
     }
