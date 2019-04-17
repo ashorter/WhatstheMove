@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DetailActivity">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ivPoster"
+        android:layout_alignParentStart="true"
+        android:text="Venom"
+        android:textSize="30sp" />
+
+    <ImageView
+        android:id="@+id/ivPoster"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tvOverview"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="-149dp"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tvVenue"
+        android:layout_width="152dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="220dp"
+        android:layout_toEndOf="@+id/tvTime"
+        android:text="TextView"
+        android:textSize="18sp"
+        tools:text="TextView" />
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="136dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/tvOverview"
+        android:layout_marginBottom="220dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        tools:text="Time and Date" />
+
+    <TextView
+        android:id="@+id/tvOverview"
+        android:layout_width="289dp"
+        android:layout_height="122dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/btnAtten"
+        android:layout_marginTop="194dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        tools:text="Follows Adonis Creed's life inside and outside of the ring as he deals with new found fame, issues with his family, and his continuing quest to become a champion." />
+
+    <Button
+        android:id="@+id/btnAtten"
+        android:layout_width="98dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="102dp"
+        android:layout_marginStart="39dp"
+        android:background="@android:color/holo_green_light"
+        android:text="Going"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btnNotAtten"
+        android:layout_width="111dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/tvVenue"
+        android:layout_alignTop="@+id/btnAtten"
+        android:background="@android:color/holo_red_dark"
+        android:text="Not Going"
+        android:textSize="18sp" />
+</RelativeLayout>

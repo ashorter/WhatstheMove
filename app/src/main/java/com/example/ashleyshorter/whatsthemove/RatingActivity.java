@@ -1,7 +1,10 @@
 package com.example.ashleyshorter.whatsthemove;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -20,27 +23,41 @@ import cz.msebera.android.httpclient.Header;
 import static com.example.ashleyshorter.whatsthemove.DetailActivity.TRAILERS_API;
 
 public class RatingActivity extends AppCompatActivity {
-/*
+
     TextView tvTitle;
     TextView tvOverview;
-    //RatingBar ratingBar;
+    // RatingBar ratingBar;
 
     Movie movie;
+
+    Button btnSubmit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
+        setContentView(R.layout.activity_rating);
 
+        btnSubmit = (Button)findViewById(R.id.btnSubmit);
+
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),MovieActivity.class);
+                startActivity(i);
+            }
+        });
+
+/*
         tvTitle = findViewById(R.id.tvTitle);
-        tvOverview = findViewById(R.id.tvOverview);
-        //ratingBar = findViewById(R.id.ratingBar);
-        //youTubePlayerView = findViewById(R.id.player);
+        // tvOverview = findViewById(R.id.tvOverview);
+        // ratingBar = findViewById(R.id.ratingBar);
+        // youTubePlayerView = findViewById(R.id.player);
 
         movie = (Movie) Parcels.unwrap(getIntent().getParcelableExtra("movie"));
         tvTitle.setText(movie.getTitle());
         tvOverview.setText(movie.getOverview());
-        //ratingBar.setRating((float) movie.getVoteAverage());
+        // ratingBar.setRating((float) movie.getVoteAverage());
 
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(String.format(TRAILERS_API, movie.getMovieId()), new JsonHttpResponseHandler() {
@@ -64,7 +81,6 @@ public class RatingActivity extends AppCompatActivity {
                 super.onFailure(statusCode, headers, responseString, throwable);
             }
         });
-
+        */
     }
-    */
 }

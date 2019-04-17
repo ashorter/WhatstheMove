@@ -66,7 +66,6 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-
     private void login(String username, String password) {
         ParseUser.logInInBackground(username, password, new LogInCallback() {
             @Override
@@ -83,8 +82,6 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-
-
     private void goMainActivity() {
         Log.d(TAG, "Navigating to main activity");
 
@@ -92,5 +89,4 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(i);
         finish();
     }
-
 }
