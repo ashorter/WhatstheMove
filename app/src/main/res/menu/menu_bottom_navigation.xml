@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item
-        android:id="@+id/action_home"
-        android:enabled="true"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="Home"
-        app:showAsAction="ifRoom" />
+        android:id="@+id/action_search"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="Search"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_favorites"
+        android:icon="@drawable/ic_favorite_black_24dp"
+        android:title="Favorites"
+        app:showAsAction="always" />
     <item
         android:id="@+id/action_profile"
-        android:enabled="true"
         android:icon="@drawable/ic_person_black_24dp"
         android:title="Profile"
-        app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/action_logout"
-        android:enabled="true"
-        android:icon="@drawable/ic_power_settings_new_black_24dp"
-        android:title="Logout"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 </menu>

@@ -1,7 +1,5 @@
 package com.example.ashleyshorter.whatsthemove.models;
 
-import android.util.Log;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -10,55 +8,43 @@ import org.parceler.Parcel;
 import java.util.ArrayList;
 import java.util.List;
 
-@Parcel
 public class Movie {
 
-    double voteAverage;
+    private final String name;
+    private final String description;
+    private final String price;
+    private final String category;
+    private final String imageName;
+
     int movieId;
-    String posterPath;
-    String title;
-    String overview;
-    String backdropPath;
 
-    public Movie() {
+    public Movie(String name, String description, String price, String category,
+                String imageName) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.category = category;
+        this.imageName = imageName;
     }
 
-    public Movie(JSONObject jsonObject) throws JSONException {
-        posterPath = jsonObject.getString("poster_path");
-        title = jsonObject.getString("title");
-        overview = jsonObject.getString("overview");
-        backdropPath = jsonObject.getString("backdrop_path");
-        voteAverage = jsonObject.getDouble("vote_average");
-        movieId = jsonObject.getInt("id");
+    public String getName() {
+        return name;
     }
 
-    public static List<Movie> fromJsonArray(JSONArray moviejsonArray) throws JSONException {
-        List<Movie> movies = new ArrayList<>();
-        for (int i = 0; i < moviejsonArray.length(); i++) {
-            movies.add(new Movie(moviejsonArray.getJSONObject(i)));
-        }
-        return movies;
+    public String getDescription() {
+        return description;
     }
 
-    public String getPosterPath() {
-        return String.format("https://image.tmdb.org/t/p/w342/%s", posterPath);
+    public String getPrice() {
+        return price;
     }
 
-    public String getBackdropPath() {
-        return String.format("https://image.tmdb.org/t/p/w342/%s", backdropPath);
-
+    public String getCategory() {
+        return category;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public String getOverview() {
-        return overview;
-    }
-
-    public double getVoteAverage() {
-        return voteAverage;
+    public String getImageName() {
+        return imageName;
     }
 
     public int getMovieId() {

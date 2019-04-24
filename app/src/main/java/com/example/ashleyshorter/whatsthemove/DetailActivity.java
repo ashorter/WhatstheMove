@@ -23,7 +23,7 @@ import cz.msebera.android.httpclient.Header;
 public class DetailActivity extends YouTubeBaseActivity {
 
     public static final String YOUTUBE_API_KEY = "AIzaSyBZgL6maMjU4dHlJF7cGBheMP8_I4Ul7Fw";
-    public static final String TRAILERS_API = "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
+    public static final String TRAILERS_API = "https://www.eventbriteapi.com/v3/events/55869374804/?token=T5JRKOVJGIYHNNF4OC6O";
 
     TextView tvTitle;
     TextView tvOverview;
@@ -46,8 +46,8 @@ public class DetailActivity extends YouTubeBaseActivity {
         //youTubePlayerView = findViewById(R.id.player);
 
         movie = (Movie) Parcels.unwrap(getIntent().getParcelableExtra("movie"));
-        tvTitle.setText(movie.getTitle());
-        tvOverview.setText(movie.getOverview());
+        tvTitle.setText(movie.getName());
+        tvOverview.setText(movie.getDescription());
         //ratingBar.setRating((float) movie.getVoteAverage());
 
         btnNotAtten = (Button)findViewById(R.id.btnNotAtten);
@@ -77,7 +77,7 @@ public class DetailActivity extends YouTubeBaseActivity {
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
                 try {
-                    JSONArray results = response.getJSONArray("results");
+                    JSONArray results = response.getJSONArray("name");
                     if (results.length() == 0){
                         return;
                     }
