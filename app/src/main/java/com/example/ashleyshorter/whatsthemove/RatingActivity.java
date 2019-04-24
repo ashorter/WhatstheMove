@@ -46,39 +46,5 @@ public class RatingActivity extends AppCompatActivity {
             }
         });
 
-/*
-        tvTitle = findViewById(R.id.tvTitle);
-        // tvOverview = findViewById(R.id.tvOverview);
-        // ratingBar = findViewById(R.id.ratingBar);
-        // youTubePlayerView = findViewById(R.id.player);
-
-        movie = (Movie) Parcels.unwrap(getIntent().getParcelableExtra("movie"));
-        tvTitle.setText(movie.getTitle());
-        tvOverview.setText(movie.getOverview());
-        // ratingBar.setRating((float) movie.getVoteAverage());
-
-        AsyncHttpClient client = new AsyncHttpClient();
-        client.get(String.format(TRAILERS_API, movie.getMovieId()), new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                super.onSuccess(statusCode, headers, response);
-                try {
-                    JSONArray results = response.getJSONArray("results");
-                    if (results.length() == 0){
-                        return;
-                    }
-                    JSONObject movieTrailer = results.getJSONObject(0);
-                    String youtubeKey = movieTrailer.getString("key");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
-            }
-        });
-        */
     }
 }

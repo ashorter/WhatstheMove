@@ -62,7 +62,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         public void bind(final Movie movie) {
             menuItemName.setText(movie.getName());
             menuItemDescription.setText(movie.getDescription());
-            Glide.with(mContext).load(movie.getImageName()).into(menuItemImage);
+            Glide.with(mContext).load(movie.getPosterPath()).into(menuItemImage);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -107,13 +107,6 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         switch (viewType) {
             case MENU_ITEM_VIEW_TYPE:
 
-         /*   case NATIVE_EXPRESS_AD_VIEW_TYPE:
-                // fall through
-            default:
-                View nativeExpressLayoutView = LayoutInflater.from(
-                        viewGroup.getContext()).inflate(R.layout.native_express_ad_container,
-                        viewGroup, false);
-                return new NativeExpressAdViewHolder(nativeExpressLayoutView);*/
             default:
                 View menuItemLayoutView = LayoutInflater.from(viewGroup.getContext()).inflate(
                         R.layout.item_event, viewGroup, false);

@@ -19,13 +19,14 @@ public class Movie {
     String time;
     String venue;
     String organizer;
+    String posterPath;
 
     int movieId;
 
     public Movie() {}
 
     public Movie(String name, String description, String price, String category,
-                String imageName, String time, String venue, String organizer) {
+                String imageName, String time, String venue, String organizer, String posterPath) {
         this.name = name;
         this.description = description;
         this.price = price;
@@ -34,6 +35,11 @@ public class Movie {
         this.time = time;
         this.venue = venue;
         this.organizer = organizer;
+        this.posterPath = posterPath;
+    }
+
+    public String getPosterPath() {
+        return String.format("https://image.tmdb.org/t/p/w342/%s", posterPath);
     }
 
     public String getName() {
@@ -71,4 +77,5 @@ public class Movie {
     public String getOrganizer(){
         return organizer;
     }
+
 }

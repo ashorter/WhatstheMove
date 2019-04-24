@@ -10,7 +10,9 @@
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Venom"
+        android:layout_above="@+id/eTComment"
+        android:layout_alignParentStart="true"
+        android:text="Please review your event!"
         android:textSize="30sp" />
 
     <EditText

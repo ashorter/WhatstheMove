@@ -101,9 +101,10 @@ public class MovieActivity extends AppCompatActivity {
                 String menuItemDate = menuItemObject.getString("date");
                 String menuItemLocation = menuItemObject.getString("location");
                 String menuItemOrganizer = menuItemObject.getString("organizer");
+                String menuPosterPath = menuItemObject.getString("photo");
 
                 Movie movie = new Movie(menuItemName, menuItemDescription, menuItemPrice,
-                        menuItemCategory, menuItemImageName, menuItemTime, menuItemLocation, menuItemOrganizer); //String time, String venue, String organizer
+                        menuItemCategory, menuItemImageName, menuItemTime, menuItemLocation, menuItemOrganizer, menuPosterPath); //String time, String venue, String organizer
                 mRecyclerViewItems.add(movie);
             }
         } catch (IOException | JSONException exception) {
