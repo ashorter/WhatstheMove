@@ -62,7 +62,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         public void bind(final Movie movie) {
             menuItemName.setText(movie.getName());
             menuItemDescription.setText(movie.getDescription());
-            Glide.with(mContext).load(movie.getPosterPath()).into(menuItemImage);
+            //Glide.with(mContext).load(movie.getPosterPath()).into(menuItemImage);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
