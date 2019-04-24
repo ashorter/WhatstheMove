@@ -8,23 +8,32 @@ import org.parceler.Parcel;
 import java.util.ArrayList;
 import java.util.List;
 
+@Parcel
 public class Movie {
 
-    private final String name;
-    private final String description;
-    private final String price;
-    private final String category;
-    private final String imageName;
+    String name;
+    String description;
+    String price;
+    String category;
+    String imageName;
+    String time;
+    String venue;
+    String organizer;
 
     int movieId;
 
+    public Movie() {}
+
     public Movie(String name, String description, String price, String category,
-                String imageName) {
+                String imageName, String time, String venue, String organizer) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.category = category;
         this.imageName = imageName;
+        this.time = time;
+        this.venue = venue;
+        this.organizer = organizer;
     }
 
     public String getName() {
@@ -49,5 +58,17 @@ public class Movie {
 
     public int getMovieId() {
         return movieId;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public String getVenue() {
+        return venue;
+    }
+
+    public String getOrganizer(){
+        return organizer;
     }
 }

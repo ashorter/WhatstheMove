@@ -20,8 +20,6 @@ import org.parceler.Parcels;
 
 import cz.msebera.android.httpclient.Header;
 
-import static com.example.ashleyshorter.whatsthemove.DetailActivity.TRAILERS_API;
-
 public class RatingActivity extends AppCompatActivity {
 
     TextView tvTitle;

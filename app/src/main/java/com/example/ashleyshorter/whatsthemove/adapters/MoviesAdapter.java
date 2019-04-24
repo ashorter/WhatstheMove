@@ -58,6 +58,20 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             //menuItemCategory = (TextView) view.findViewById(R.id.menu_item_category);
             menuItemDescription = (TextView) view.findViewById(R.id.tvOverview);
         }
+
+        public void bind(final Movie movie) {
+            menuItemName.setText(movie.getName());
+            menuItemDescription.setText(movie.getDescription());
+            Glide.with(mContext).load(movie.getImageName()).into(menuItemImage);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(mContext, DetailActivity.class);
+                    i.putExtra("movie", Parcels.wrap(movie));
+                    mContext.startActivity(i);
+                }
+            });
+        }
     }
 
     /**
@@ -112,9 +126,11 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
      *  Replaces the content in the views that make up the menu item view and the
      *  Native Express ad view. This method is invoked by the layout manager.
      */
+
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         int viewType = getItemViewType(position);
+
         switch (viewType) {
             case MENU_ITEM_VIEW_TYPE:
             default:
@@ -132,6 +148,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 //              menuItemHolder.menuItemPrice.setText(menuItem.getPrice());
 //                menuItemHolder.menuItemCategory.setText(menuItem.getCategory());
                 menuItemHolder.menuItemDescription.setText(menuItem.getDescription());
+                menuItemHolder.bind(menuItem);
         }
     }
 
