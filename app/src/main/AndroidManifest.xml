@@ -32,11 +32,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".DetailActivity"
+        <activity
+            android:name=".DetailActivity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".MovieActivity"
+        <activity
+            android:name=".MovieActivity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".RatingActivity"></activity>
+        <activity android:name=".RatingActivity" />
+        <activity android:name=".VenueActivity" />
+        <activity android:name=".OrganizerActivity"></activity>
     </application>
 
 </manifest>

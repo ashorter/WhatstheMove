@@ -19,6 +19,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.parceler.Parcels;
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -71,6 +72,24 @@ public class DetailActivity extends YouTubeBaseActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(),RatingActivity.class);
+                startActivity(i);
+            }
+        });
+
+        tvOrganizer.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),OrganizerActivity.class);
+                startActivity(i);
+            }
+        });
+
+        tvVenue.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(),VenueActivity.class);
                 startActivity(i);
             }
         });
