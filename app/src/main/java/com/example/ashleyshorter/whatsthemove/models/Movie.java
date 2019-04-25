@@ -23,10 +23,11 @@ public class Movie {
 
     int movieId;
 
-    public Movie() {}
+    public Movie() {
+    }
 
     public Movie(String name, String description, String price, String category,
-                String imageName, String time, String venue, String organizer, String posterPath) {
+                 String imageName, String time, String venue, String organizer, String posterPath) {
         this.name = name;
         this.description = description;
         this.price = price;
@@ -74,7 +75,7 @@ public class Movie {
         return venue;
     }
 
-    public String getOrganizer(){
+    public String getOrganizer() {
         return organizer;
     }
 

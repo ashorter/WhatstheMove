@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -36,8 +37,6 @@ public class DetailActivity extends YouTubeBaseActivity {
     TextView tvVenue;
     TextView tvTime;
     TextView tvOrganizer;
-    //RatingBar ratingBar;
-    //YouTubePlayerView youTubePlayerView;
 
     Movie movie;
 
@@ -54,13 +53,6 @@ public class DetailActivity extends YouTubeBaseActivity {
         tvVenue = findViewById(R.id.tvVenue);
         tvTime = findViewById(R.id.tvTime);
         tvOrganizer = findViewById(R.id.tvOrganizer);
-        //ratingBar = findViewById(R.id.ratingBar);
-        //youTubePlayerView = findViewById(R.id.player);
-
-       // movie = (Movie) Parcels.unwrap(getIntent().getParcelableExtra("movie"));
-        //tvTitle.setText(movie.getName());
-        //tvOverview.setText(movie.getDescription());
-        //ratingBar.setRating((float) movie.getVoteAverage());
 
         btnNotAtten = (Button)findViewById(R.id.btnNotAtten);
         btnAtten = (Button)findViewById(R.id.btnAtten);
@@ -84,31 +76,6 @@ public class DetailActivity extends YouTubeBaseActivity {
         });
 
         addMenuItemsFromJson();
-/*
-        AsyncHttpClient client = new AsyncHttpClient();
-        client.get(String.format(TRAILERS_API, movie.getMovieId()), new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                super.onSuccess(statusCode, headers, response);
-                try {
-                    JSONArray results = response.getJSONArray("name");
-                    if (results.length() == 0){
-                        return;
-                    }
-                    JSONObject movieTrailer = results.getJSONObject(0);
-                    String youtubeKey = movieTrailer.getString("key");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
-            }
-
-        });*/
-
     }
 
     private void addMenuItemsFromJson() {
@@ -136,8 +103,6 @@ public class DetailActivity extends YouTubeBaseActivity {
                 tvTime.setText(movie.getTime());
                 tvOrganizer.setText(movie.getOrganizer());
                 tvVenue.setText(movie.getVenue());
-
-
             }
         } catch (IOException | JSONException exception) {
             Log.e(MovieActivity.class.getName(), "Unable to parse JSON file.", exception);
