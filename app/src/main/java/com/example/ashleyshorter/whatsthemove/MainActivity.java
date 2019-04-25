@@ -11,6 +11,8 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -47,108 +49,42 @@ import java.util.List;
 import cz.msebera.android.httpclient.Header;
 
 public class MainActivity extends AppCompatActivity {
-/*
-    private  static final String MOVIE_URL = "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
 
-    final String TAG = "MainActivity";
-    private EditText etDescription;
-    private Button btnCaptureImage;
-    private ImageView ivPostImage;
-    private Button btnSubmit;
-    private Button btnLogout;
-    private File photoFile;
-
-    public final static int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1034;
-    public String photoFileName = "photo.jpg";
-
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        final FragmentManager fragmentManager = getSupportFragmentManager();
 
-        btnLogout = findViewById(R.id.btnLogout);
-
-        // logout
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ParseUser.logOut();
-                ParseUser currentUser = ParseUser.getCurrentUser();
-                Intent i = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(i);
-                Toast.makeText(MainActivity.this, "Successfully logged out", Toast.LENGTH_SHORT).show();
-            }
-
-        });
-
-        RecyclerView rvMovie = findViewById(R.id.rvMovie);
-
-        movies = new ArrayList<>();
-        final MoviesAdapter adapter = new MoviesAdapter(this, movies);
-        rvMovie.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false));
-        rvMovie.setAdapter(adapter);
-
-        AsyncHttpClient client = new AsyncHttpClient();
-        client.get(MOVIE_URL, new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                try {
-                    JSONArray movieJsonArray = response.getJSONArray("results");
-                    movies.addAll(Movie.fromJsonArray(movieJsonArray));
-                    adapter.notifyDataSetChanged();
-                    Log.d("smile", movieJsonArray.toString());
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
-            }
-        });
-
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Fragment fragment = null;
                 switch (item.getItemId()) {
-                    case R.id.action_home:
-                        // do something here
-                        return true;
+                    case R.id.action_search:
+                        //fragment = new PostsFragment();
+                        Toast.makeText(MainActivity.this, "Search!", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.action_favorites:
+                        //fragment = new ComposeFragment();
+                        Toast.makeText(MainActivity.this, "Favorites!", Toast.LENGTH_SHORT).show();
+                        break;
                     case R.id.action_profile:
-                        // do something here
-                        return true;
-                    case R.id.action_logout:
-                        // do something here
-                        return true;
+                        //fragment = new ProfileFragment();
+                        Toast.makeText(MainActivity.this, "Profile!", Toast.LENGTH_SHORT).show();
+                    default:
+                        break;
                 }
-                // I added this
+                fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
                 return true;
             }
         });
+        // Set default selection
+        bottomNavigationView.setSelectedItemId(R.id.action_search);
     }
 
-    private void queryPosts() {
-        ParseQuery<Post> postQueuery = new ParseQuery<Post>(Post.class);
-        postQueuery.include(Post.KEY_USER);
-        postQueuery.findInBackground(new FindCallback<Post>() {
-            @Override
-            public void done(List<Post> posts, ParseException e) {
-                if (e != null) {
-                    Log.e(TAG, "ERROR WITH QUERY");
-                    e.printStackTrace();
-                    return;
-                }
-                for (int i = 0; i < posts.size(); i++) {
-                    Post post = posts.get(i);
-                    Log.d(TAG, "Posts " + post.getDescription() + ", username: " + post.getUser().getUsername());
-                }
-            }
-        });
-    }
-    */
 }

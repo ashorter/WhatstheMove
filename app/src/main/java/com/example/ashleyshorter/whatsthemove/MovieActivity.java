@@ -1,5 +1,6 @@
 package com.example.ashleyshorter.whatsthemove;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,7 @@ import com.example.ashleyshorter.whatsthemove.adapters.MoviesAdapter;
 import com.example.ashleyshorter.whatsthemove.models.Movie;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.parse.ParseUser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,6 +32,8 @@ import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 
+import static java.security.AccessController.getContext;
+
 public class MovieActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
@@ -43,6 +47,8 @@ public class MovieActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie);
 
+        final FragmentManager fragmentManager = getSupportFragmentManager();
+
         mRecyclerView = (RecyclerView) findViewById(R.id.rvMovie);
         mRecyclerView.setHasFixedSize(true);
 
@@ -54,7 +60,6 @@ public class MovieActivity extends AppCompatActivity {
 
         addMenuItemsFromJson();
 
-        final FragmentManager fragmentManager = getSupportFragmentManager();
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -63,24 +68,26 @@ public class MovieActivity extends AppCompatActivity {
                 Fragment fragment = null;
                 switch (item.getItemId()) {
                     case R.id.action_search:
-                        // lets get this bread(toast)... for now.
-                        Toast.makeText(MovieActivity.this, "Search!", Toast.LENGTH_SHORT).show();
+                        //fragment = new PostsFragment();
                         break;
                     case R.id.action_favorites:
-                        // lets get this bread(toast)... for now.
-                        Toast.makeText(MovieActivity.this, "Favorites!", Toast.LENGTH_SHORT).show();
+                        //fragment = new ComposeFragment();
                         break;
                     case R.id.action_profile:
-                        // lets get this bread(toast)... for now.
-                        Toast.makeText(MovieActivity.this, "Profile!", Toast.LENGTH_SHORT).show();
+                        ParseUser.logOut();
+                        ParseUser currentUser = ParseUser.getCurrentUser();
+                        Intent i = new Intent(MovieActivity.this, LoginActivity.class);
+                        startActivity(i);
+                        Toast.makeText(MovieActivity.this, "Successfully logged out!", Toast.LENGTH_SHORT).show();
+                    default:
                         break;
                 }
-                //transaction = changing frame layout into fragment, thereby putting the chosen fragment as adefault view when in main activity aka bottom navigation
-                fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
+                //fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
                 return true;
             }
         });
-       // bottomNavigationView.setSelectedItemId(R.id.action_search);
+        // Set default selection
+        bottomNavigationView.setSelectedItemId(R.id.action_search);
     }
 
     private void addMenuItemsFromJson() {
